@@ -4,8 +4,7 @@
 # ライブラリのインポート
 from sklearn.datasets import fetch_openml
 from sklearn.model_selection import train_test_split
-# from sklearn.svm import SVC
-from sklearn.ensemble import RandomForestClassifier
+from sklearn.svm import SVC
 from sklearn.model_selection import cross_val_score
 
 # MNISTデータのダウンロード
@@ -30,10 +29,8 @@ X_train = X_train / 255
 X_test = X_test / 255
 
 
-# # 分類器: サポートベクターマシン(カーネルはRBF)
-# classifier = SVC(gamma="auto", random_state=SEED)
-# ランダムフォレスト  (木の数は100)
-classifier = RandomForestClassifier(random_state=SEED)
+# 分類器: サポートベクターマシン(カーネルはRBF)
+classifier = SVC(gamma="auto", random_state=SEED)
 
 
 # 交差検証(10分割）を実行
