@@ -42,4 +42,3 @@ cv_scores = cross_val_score(estimator=classifier, X=X_train, y=y_train, cv=10)
 
 # スコアを出力
 print(f"score: {sum(cv_scores) / len(cv_scores)}")
-
