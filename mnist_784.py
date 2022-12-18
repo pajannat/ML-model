@@ -37,5 +37,11 @@ classifier = SVC(gamma="auto", random_state=SEED)
 cv_scores = cross_val_score(estimator=classifier, X=X_train, y=y_train, cv=10)
 
 
-# スコアを出力
-print(f"score: {sum(cv_scores) / len(cv_scores)}")
+def main():
+
+    # スコアを出力
+    print(f"score: {sum(cv_scores) / len(cv_scores)}")
+
+
+if __name__ == '__main__':
+    main()

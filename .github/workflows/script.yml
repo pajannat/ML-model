@@ -32,4 +32,4 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r text/requirements.txt
       - name: Run a Python script
-        run: python test/test_mnist_784.py
+        run: python test_mnist_784.py
