@@ -32,7 +32,7 @@ X_test = X_test / 255
 
 # # 分類器: サポートベクターマシン(カーネルはRBF)
 # classifier = SVC(gamma="auto", random_state=SEED)
-# ランダムフォレスト  (木の数は100)  
+# ランダムフォレスト  (木の数は100)
 classifier = RandomForestClassifier(random_state=SEED)
 
 
