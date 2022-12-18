@@ -1,3 +1,4 @@
+# pylint: disable=import-error
 """ mnist_784のデータに対して、学習・推論する """
 
 # ライブラリのインポート
