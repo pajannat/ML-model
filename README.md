@@ -6,7 +6,7 @@
 
 + **.github/workflows**: Github Actions の各Actionを格納  
   **pylint.yml**: PythonのLinter  
-  **script.yml**: pythonscript を実行する Github Actions  
+  **script.yml**: pythonscript を実行する Github Action  
 
 + **text**:
   **requirements.txt**: "script.yml" に import するライブラリを記述  
