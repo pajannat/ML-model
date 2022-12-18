@@ -1,0 +1,37 @@
+name: train-my-model
+on:
+  push:
+    paths:
+      - 'ML-model/mnist_784.py'
+  pull_request:
+    branches:
+      - dev
+jobs:
+  train-model:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: iterative/setup-cml@v1
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.8'
+      - name: Train model
+        env:
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          S3_BUCKET_NAME: ${{ secrets.S3_BUCKET_NAME }}
+          S3_PATH_NAME: ${{ secrets.S3_PATH_NAME }}
+          S3_MODEL_PATH_NAME: ${{ secrets.S3_MODEL_PATH_NAME }}
+        run: |
+          cd async-processing
+          docker compose up -d
+          docker compose exec -T consumer python3 consumer/tasks.py
+          # Create CML report
+          echo "## Metrics" >> report.md
+          cat app/data/metrics.txt >> report.md
+          echo "## Plots" >> report.md
+          echo "### YY-plot" >> report.md
+          cml-publish app/data/yy_plot.png --md --title 'YY Plot' >> report.md
+          echo "### Residual-plot" >> report.md
+          cml-publish app/data/residual_plot.png --md --title 'Residual Plot' >> report.md
+          cml-send-comment report.md
