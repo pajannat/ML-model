@@ -24,7 +24,7 @@ X_train, X_test, y_train, y_test = train_test_split(
     random_state=SEED,
     stratify=mnist_784.target)
 
-# 0から255までの値なので255で割って規格化する。
+# 0から255までの値なので255で割って規格化する
 X_train = X_train / 255
 X_test = X_test / 255
 
